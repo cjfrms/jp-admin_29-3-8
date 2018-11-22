@@ -11,14 +11,13 @@ import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
-import { SafeUrlPipePipe } from './shared/pipes/safe-url-pipe.pipe';
+import { IframeModule } from './features/iframe/iframe.module';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SafeUrlPipePipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,8 @@ registerLocaleData(zh);
     HttpClientModule,
     NgZorroAntdModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    IframeModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]

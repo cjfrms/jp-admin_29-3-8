@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { LayoutComponent } from './shared/layout/layout.component';
+import { IframeComponent } from './features/iframe/iframe.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: LayoutComponent
+    path: "layout",
+    // component: LayoutComponent,
+    component: IframeComponent,
+  /*  children: [
+      {
+        path: "",
+        loadChildren: "./features/iframe/iframe.module#IframeModule",
+        data: { pageTitle: "Schdule List" }
+      }
+    ]*/
   }
 ];
 
