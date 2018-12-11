@@ -12,6 +12,10 @@ const routes: Routes = [
       {
         path: "",
         loadChildren: "./features/extenal-url/extenal-url.module#ExtenalUrlModule"
+      },
+      {
+        path: "schedule",
+        loadChildren: "./features/schedule/schedule.module#ScheduleModule"
       }
     ]
   }

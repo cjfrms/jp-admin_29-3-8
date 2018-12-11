@@ -11,6 +11,7 @@ import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
+import { ScheduleModule } from './features/schedule/schedule.module';
 
 registerLocaleData(zh);
 
@@ -25,7 +26,8 @@ registerLocaleData(zh);
     HttpClientModule,
     NgZorroAntdModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    ScheduleModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
