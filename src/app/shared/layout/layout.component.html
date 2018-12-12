@@ -1,4 +1,4 @@
-<nz-layout class="layout">
+<nz-layout style="height:100%">
   <nz-header>
     <div class="logo"></div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
@@ -45,7 +45,7 @@
         <nz-breadcrumb-item>List</nz-breadcrumb-item>
         <nz-breadcrumb-item>App</nz-breadcrumb-item>
       </nz-breadcrumb>
-      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">Conten<router-outlet></router-outlet></nz-content>
+      <nz-content style="background:#fff; padding: 24px; min-height: 100%;"><router-outlet></router-outlet></nz-content>
     </nz-layout>
   </nz-layout>
 </nz-layout>
