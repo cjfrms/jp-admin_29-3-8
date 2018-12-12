@@ -5,12 +5,12 @@ import { ExtenalUrlComponent } from './features/extenal-url/extenal-url.componen
 
 const routes: Routes = [
   {
-    path: "layout",
+    path: "",
     component: LayoutComponent,
   //  component: ExtenalUrlComponent,
     children: [
       {
-        path: "",
+        path: "ext",
         loadChildren: "./features/extenal-url/extenal-url.module#ExtenalUrlModule"
       },
       {
