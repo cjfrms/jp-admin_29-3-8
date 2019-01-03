@@ -1,6 +1,6 @@
 <nz-breadcrumb style="font-size: 20px" >
     <nz-breadcrumb-item>
-      <span>定期任务管理</span>
+      <span>定时任务管理</span>
     </nz-breadcrumb-item>
   </nz-breadcrumb>
   <nz-divider></nz-divider>
@@ -42,26 +42,43 @@
   </ng-template>
 
   <ng-template #modalContent>
-    <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control>
-          <nz-input-group [nzPrefix]="prefixUser">
-            <input formControlName="userName" nz-input placeholder="Username">
-          </nz-input-group>
-          <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
-        </nz-form-control>
-      </nz-form-item>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>任务组</nz-form-label>
+            <nz-form-control [nzSpan]="17" nzHasFeedback>
+              <input nz-input formControlName="jobGroup" [(ngModel)]="schedule.jobGroup" placeholder="async validate try to write JasonWood">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>任务ID</nz-form-label>
+            <nz-form-control [nzSpan]="17" nzHasFeedback>
+              <input nz-input formControlName="jobName" [(ngModel)]="schedule.jobName" placeholder="async validate try to write JasonWood">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>类名（FQCN）</nz-form-label>
+            <nz-form-control [nzSpan]="17" nzHasFeedback>
+              <input nz-input formControlName="jobClassName" [(ngModel)]="schedule.jobClassName" placeholder="async validate try to write JasonWood">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>cron表达式</nz-form-label>
+            <nz-form-control [nzSpan]="17" nzHasFeedback>
+              <input nz-input formControlName="cronExpression" [(ngModel)]="schedule.cronExpression" placeholder="async validate try to write JasonWood">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>任务描述</nz-form-label>
+            <nz-form-control [nzSpan]="17" nzHasFeedback>
+              <input nz-input formControlName="desc" [(ngModel)]="schedule.desc" placeholder="async validate try to write JasonWood">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control [nzOffset]="7" [nzSpan]="12">
+              <button nz-button nzType="primary" [disabled]="!validateForm.valid">Submit</button>
+              <button nz-button (click)="resetForm($event)">Reset</button>
+            </nz-form-control>
+          </nz-form-item>
     </form>
-  </ng-template>
-
-  <ng-template #modalFooter>
-    <span>Modal Footer: </span>
-    <button nz-button nzType="default" (click)="handleCancel()">Custom Callback</button>
-    <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Custom Submit</button>
   </ng-template>
 </nz-modal>

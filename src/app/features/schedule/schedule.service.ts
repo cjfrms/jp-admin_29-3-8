@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
   private baseUrl = '/api/test';
-
   constructor(private http: HttpClient) { }
 
   getScheduleList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get('/api/test');
+  }
+
+  createSchedule(schedule: Object): Observable<Object> {
+    console.log("yyy");
+    return this.http.post('/api/schedule/create', schedule);
   }
 }
