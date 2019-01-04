@@ -17,6 +17,7 @@ import { Schedule } from '../schedule';
 export class ScheduleManagementComponent implements OnInit {
 
   dataSet ;
+  item;
   isVisible = false;
   validateForm: FormGroup;
   schedule: Schedule = new Schedule();
@@ -60,6 +61,12 @@ export class ScheduleManagementComponent implements OnInit {
 
   createCustomer(): void {
     this.scheduleService.createSchedule(this.schedule).subscribe(data => console.log(data), error => console.log(error));
+  }
+  deleteRow(job_name: string): void {
+    console.log(job_name);
+    this.item = this.dataSet.find(item => item.job_name === job_name);
+    alert(this.item.job_name);
+    this.scheduleService.deleteSchedule(this.dataSet.find(item => item.job_name === job_name)).subscribe(data => console.log(data), error => console.log(error));
   }
 
 

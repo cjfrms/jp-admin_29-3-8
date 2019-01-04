@@ -15,7 +15,10 @@ export class ScheduleService {
   }
 
   createSchedule(schedule: Object): Observable<Object> {
-    console.log("yyy");
-    return this.http.post('/api/schedule/create', schedule);
+    return this.http.post('/api/createSchedule', schedule);
+  }
+
+  deleteSchedule(schedule: Object): Observable<Object> {
+    return this.http.post('/api/deleteSchedule', schedule);
   }
 }
