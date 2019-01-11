@@ -28,11 +28,11 @@ export class LoginService {
 
         const xx = "grant_type=password&username=admin&password=pwd&scope=read";
 
-        return this.http.post('http://localhost:8081/oauth/token' , xx, httpOptions)
-        .pipe(map(authenticateSuccess.bind(this)));
+        return this.http.post('http://localhost:8081/oauth/token' , xx, httpOptions);
+        //.pipe(map(authenticateSuccess.bind(this)));
         //return this.http.post('http://localhost:8081/oauth/token', data, { headers: authHeader })
         //.pipe(map(authenticateSuccess.bind(this)));
-
+        /*
         function authenticateSuccess(resp) {
             const bearerToken = resp.headers.get('Authorization');
             if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
@@ -42,5 +42,6 @@ export class LoginService {
                 return jwt;
             }
         }
+        */
     }
 }

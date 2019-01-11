@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password,
       rememberMe: this.rememberMe
-    }).subscribe();
+    }).subscribe(data => {
+      console.log(data.access_token);
+    });
   }
 
   constructor(private fb: FormBuilder, private loginService: LoginService ) {
