@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +14,25 @@ import {
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
+  password: string;
+  rememberMe: boolean;
+  username: string;
+  credentials: any;
 
   submitForm(): void {
-    /*
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[ i ].markAsDirty();
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
-    */
+    this.loginService.login({
+      username: this.username,
+      password: this.password,
+      rememberMe: this.rememberMe
+    }).subscribe();
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private loginService: LoginService ) {
+    this.credentials = {};
   }
 
   ngOnInit(): void {

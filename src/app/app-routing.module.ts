@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 import { LayoutComponent } from './shared/layout/layout.component';
 import { ExtenalUrlComponent } from './features/extenal-url/extenal-url.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,11 @@ const routes: Routes = [
         loadChildren: "./features/schedule/schedule.module#ScheduleModule"
       }
     ]
-  }
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
 ];
 
 @NgModule({
