@@ -26,8 +26,8 @@ export class LoginService {
             scope: 'read'
         };
 
-        const xx = "grant_type=password&username=admin&password=pwd&scope=read";
-
+        const xx = "grant_type=password&username=" + credentials.username + "&password=" + credentials.password + "&scope=read";
+        console.log(xx);
         return this.http.post('http://localhost:8081/oauth/token' , xx, httpOptions);
         //.pipe(map(authenticateSuccess.bind(this)));
         //return this.http.post('http://localhost:8081/oauth/token', data, { headers: authHeader })

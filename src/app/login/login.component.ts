@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[ i ].updateValueAndValidity();
     }
     this.loginService.login({
-      username: this.username,
-      password: this.password,
-      rememberMe: this.rememberMe
+      username: String(this.validateForm.get('userName').value) , // this.username,
+      password: String(this.validateForm.get('password').value) , // this.password,
+      // rememberMe: String(this.validateForm.get('rememberMe').value) // this.rememberMe
     }).subscribe(data => {
       console.log(data.access_token);
     });
