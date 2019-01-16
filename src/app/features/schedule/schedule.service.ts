@@ -7,11 +7,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ScheduleService {
-  private baseUrl = '/api/test';
+  private baseUrl = 'http://localhost:8081/api/test';
   constructor(private http: HttpClient) { }
 
   getScheduleList(): Observable<any> {
-    return this.http.get('/api/test');
+    return this.http.get(this.baseUrl);
   }
 
   createSchedule(schedule: Object): Observable<Object> {

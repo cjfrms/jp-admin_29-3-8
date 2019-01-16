@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import {
   AbstractControl,
   FormBuilder,
@@ -29,11 +30,15 @@ export class LoginComponent implements OnInit {
       password: String(this.validateForm.get('password').value) , // this.password,
       // rememberMe: String(this.validateForm.get('rememberMe').value) // this.rememberMe
     }).subscribe(data => {
-      console.log(data.access_token);
-    });
+      this.router.navigate(['/schedule']);
+    },
+    error => {
+      console.log(error);
+    }
+    );
   }
 
-  constructor(private fb: FormBuilder, private loginService: LoginService ) {
+  constructor(private router: Router, private fb: FormBuilder, private loginService: LoginService ) {
     this.credentials = {};
   }
 

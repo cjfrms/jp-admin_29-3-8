@@ -14,7 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
 import { ScheduleModule } from './features/schedule/schedule.module';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { ErrorHandlerInterceptor } from './shared/interceptor/errorhandler.interceptor';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 registerLocaleData(zh);
 
@@ -30,6 +32,7 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     NgZorroAntdModule,
+    NgxWebstorageModule.forRoot(),
     AppRoutingModule,
     LayoutModule,
     ScheduleModule
@@ -38,9 +41,14 @@ registerLocaleData(zh);
     { provide: NZ_I18N, useValue: zh_CN },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptor,
+      useClass: AuthInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
