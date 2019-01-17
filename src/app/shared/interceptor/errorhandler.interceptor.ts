@@ -14,7 +14,29 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                 (event: HttpEvent<any>) => {},
                 (err: any) => {
                     if (err instanceof HttpErrorResponse) {
-                        this.message.create('error', err.error);
+                        if (err.status === 400) {
+                            if (typeof err.error.error_description === "string") {
+                                this.message.create('error', err.error.error_description);
+                            } else {
+                                this.message.create('error', err.error);
+                            }
+                        }
+                        if (err.status === 401) {
+                            this.message.create('error', err.error.error);
+                        }
+                        /*
+                        alert(err.status + "\n" + err.message + "\n" + err.statusText);
+                        if (err.error) {
+                            this.message.create('error', err.error);
+                            alert("a");
+                        } else if (err.error.error) {
+                            this.message.create('error', err.error.error);
+                            alert("b");
+                        } else {
+                            this.message.create('error', err.message);
+                            alert("c");
+                        }
+                        */
                     }
                 }
             )

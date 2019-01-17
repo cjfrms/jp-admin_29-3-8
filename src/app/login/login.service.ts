@@ -10,7 +10,8 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 })
 export class LoginService {
     private SERVER_API_URL = '/api/test';
-    constructor(private http: HttpClient, private $localStorage: LocalStorageService) { }
+    apiUrl = environment.apiUrl;
+    constructor(private http: HttpClient, private localStorage: LocalStorageService, private sessionStorage: SessionStorageService) { }
 
     login(credentials): Observable<any> {
         const authHeader = new HttpHeaders().append("Authorization", "Basic bm9ybWFsLWFwcDpzZWNyZXQ=")
@@ -18,23 +19,19 @@ export class LoginService {
         const httpOptions = {
             headers: authHeader
         };
-        const data = {
-            username: credentials.username,
-            password: credentials.password,
-            rememberMe: credentials.rememberMe,
-            grant_type: 'password',
-            scope: 'read'
-        };
 
         const xx = "grant_type=password&username=" + credentials.username + "&password=" + credentials.password + "&scope=read";
-        console.log(xx);
-        return this.http.post('http://localhost:8081/oauth/token' , xx, httpOptions).pipe(
+        return this.http.post(this.apiUrl + 'oauth/token' , xx, {headers: authHeader}).pipe(
                 map(authenticateSuccess.bind(this))
         );
         function authenticateSuccess(token) {
             console.log(token.access_token);
-            this.$localStorage.store('authenticationToken', token.access_token);
+            this.sessionStorage.store('authenticationToken', token.access_token);
             return token;
         }
+    }
+    logout(): void {
+        this.localStorage.clear('authenticationToken');
+        this.sessionStorage.clear('authenticationToken');
     }
 }

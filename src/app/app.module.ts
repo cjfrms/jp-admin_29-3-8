@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './shared/layout/layout.module';
 import { ScheduleModule } from './features/schedule/schedule.module';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { AuthExpiredInterceptor } from './shared/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './shared/interceptor/errorhandler.interceptor';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 
@@ -44,6 +45,12 @@ registerLocaleData(zh);
       useClass: AuthInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
+      multi: true
+    },
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerInterceptor,
