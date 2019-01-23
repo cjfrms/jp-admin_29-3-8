@@ -66,7 +66,8 @@ export class ScheduleManagementComponent implements OnInit {
     console.log(job_name);
     this.item = this.dataSet.find(item => item.job_name === job_name);
     alert(this.item.job_name);
-    // this.scheduleService.deleteSchedule(this.dataSet.find(item => item.job_name === job_name)).subscribe(data => console.log(data), error => console.log(error));
+    // this.scheduleService.deleteSchedule(this.dataSet.find(item => item.job_name === job_name))
+    // .subscribe(data => console.log(data), error => console.log(error));
   }
 
 
